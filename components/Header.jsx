@@ -2,7 +2,7 @@ import Logo from "./Logo";
 import Search from "./Search";
 import Sidebar from "./Sidebar";
 
-export default function Header() {
+export default function Header({ docs }) {
   return (
     <header className="fixed inset-y-0 left-0 z-40 contents w-72 overflow-y-auto border-r border-zinc-900/10 px-6 pb-8 pt-4 dark:border-white/10 lg:block xl:w-80">
       <Logo />
@@ -13,7 +13,7 @@ export default function Header() {
         <div className="container flex h-14 items-center justify-between gap-12">
           <div className="absolute inset-x-0 top-full h-px bg-zinc-900/7.5 transition dark:bg-white/7.5"></div>
 
-          <Search />
+          <Search docs={docs} />
         </div>
       </div>
       <Sidebar />
