@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { root } from "postcss";
 
 export default function Sidebar({ docs }) {
   const roots = docs.filter((doc) => !parent);
@@ -26,8 +25,23 @@ export default function Sidebar({ docs }) {
                   className="flex justify-between gap-2 py-1 pl-7 pr-3 text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
                   href={`/docs/${rootNode.id}`}
                 >
-                  <span class="truncate">Guides</span>
+                  <span class="truncate">{rootNode.title}</span>
                 </Link>
+                {
+                  nonRoots[rootNode.id] && (
+                    <ul role="list" className="border-l border-transparent">
+                      {nonRoots[rootNode.id].map((subRoot)) => (
+                        <li key={subRoot.id} className="relative">
+                            <Link
+                    className="flex justify-between gap-2 py-1 pl-7 pr-3 text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                    href="/docs#guides"
+                    ><span className="truncate">Guides</span>
+                    </Link>
+                        </li>
+                      )}
+                    </ul>
+                  )
+                }
               </li>
             ))}
           </ul>
